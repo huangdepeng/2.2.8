@@ -883,28 +883,39 @@ namespace Sensor {
         let y: number;
         let now_state = enRocker.Nostate;
 
-        switch (port) {
+        switch (port) {         //x轴模拟量获取
             case hicbit_Port.port1:
                 pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
                 x = pins.analogReadPin(AnalogPin.P1);
-                pins.setPull(DigitalPin.P15, PinPullMode.PullDown);
-                y = pins.analogReadPin(AnalogPin.P1);
                 break;
             case hicbit_Port.port2:
                 pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
                 x = pins.analogReadPin(AnalogPin.P2);
-                pins.setPull(DigitalPin.P13, PinPullMode.PullDown);
-                y = pins.analogReadPin(AnalogPin.P2);
                 break;
             case hicbit_Port.port3:
                 pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
                 x = pins.analogReadPin(AnalogPin.P3);
-                pins.setPull(DigitalPin.P14, PinPullMode.PullDown);
-                y = pins.analogReadPin(AnalogPin.P3);
                 break;
             case hicbit_Port.port4:
                 pins.setPull(DigitalPin.P10, PinPullMode.PullUp);
                 x = pins.analogReadPin(AnalogPin.P4);
+                break;
+        }
+
+        switch (port) {         //y轴模拟量获取
+            case hicbit_Port.port1:
+                pins.setPull(DigitalPin.P15, PinPullMode.PullDown);
+                y = pins.analogReadPin(AnalogPin.P1);
+                break;
+            case hicbit_Port.port2:
+                pins.setPull(DigitalPin.P13, PinPullMode.PullDown);
+                y = pins.analogReadPin(AnalogPin.P2);
+                break;
+            case hicbit_Port.port3:
+                pins.setPull(DigitalPin.P14, PinPullMode.PullDown);
+                y = pins.analogReadPin(AnalogPin.P3);
+                break;
+            case hicbit_Port.port4:
                 pins.setPull(DigitalPin.P10, PinPullMode.PullDown);
                 y = pins.analogReadPin(AnalogPin.P4);
                 break;
